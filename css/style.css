@@ -1,0 +1,168 @@
+:root{
+    --bkg-clr: #7ecadf;
+    --txt-clr: #ffffff;
+    --bkmrk-1: #f14b0e;
+    --bkmrk-2: #f5ab0c;
+    --bkmrk-3: #e3ea1b;
+    --bkmrk-4: #029e46;
+    --bkmrk-5: #0099ff;
+    --bkmrk-6: #2269ee;
+    --bkmrk-7: #d156cf;
+    --dsbl: #d2d1d1;
+    --fast: 400ms;
+    --slow: 600ms;
+}
+html, body{
+    height: 100%;
+}
+body{
+    width: 100%;
+    margin: 0;
+    background-color: var(--bkg-clr);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notebook{
+    min-width: 1280px;
+    max-width: 1280px;
+    min-height: 625px;
+    max-height: 625px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    font-family: sans-serif;
+}
+header{
+    flex-basis: 10%;
+}
+nav{
+    display: flex;
+}
+header section{
+    flex-basis: 17%;
+    margin-left: -30px;
+    min-height: 100%;
+    max-height: 63px;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    box-shadow: inset 0px -10px 13px -10px #383838;
+    transition-duration: var(--fast);
+}
+header section:nth-child(1){
+    margin-left: 0;
+}
+section label{
+    width: 100%;
+    max-height: 62px;    /*ToDo: ограничить количество вводимых символов*/
+    padding: 22px;
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: bold;
+    overflow: hidden;
+    cursor: pointer;
+    color: var(--dsbl);
+    caret-color: transparent;
+    transition-duration: var(--slow);
+}
+section label:focus,
+main:focus{
+    outline: 0;
+}
+section:hover label{
+    color: var(--txt-clr);
+}
+.home,
+.notebook:has(#hom:checked) main{
+    background-color: var(--bkmrk-1);
+}
+.about,
+.notebook:has(#abt:checked) main{
+    background-color: var(--bkmrk-2);
+}
+.contacts,
+.notebook:has(#con:checked) main{
+    background-color: var(--bkmrk-3);
+}
+.another,
+.notebook:has(#ant:checked) main{
+    background-color: var(--bkmrk-4);
+}
+.another1,
+.notebook:has(#ant1:checked) main{
+    background-color: var(--bkmrk-5);
+}
+.another2,
+.notebook:has(#ant2:checked) main{
+    background-color: var(--bkmrk-6);
+}
+.another3,
+.notebook:has(#ant3:checked) main{
+    background-color: var(--bkmrk-7);
+}
+.notebook:has(#hom:checked) .home label,
+.notebook:has(#abt:checked) .about label,
+.notebook:has(#con:checked) .contacts label,
+.notebook:has(#ant:checked) .another label,
+.notebook:has(#ant1:checked) .another1 label,
+.notebook:has(#ant2:checked) .another2 label,
+.notebook:has(#ant3:checked) .another3 label{    
+    cursor: text;
+    color: var(--txt-clr);
+}
+.notebook:has(#hom:checked) .home,
+.notebook:has(#abt:checked) .about,
+.notebook:has(#con:checked) .contacts,
+.notebook:has(#ant:checked) .another,
+.notebook:has(#ant1:checked) .another1,
+.notebook:has(#ant2:checked) .another2,
+.notebook:has(#ant3:checked) .another3{    
+    box-shadow: none;
+    position: relative;
+    z-index: 1;  
+}
+main{
+    flex-basis: 90%;
+    padding: 30px;
+    overflow: hidden;
+    display: flex;
+    background-color: var(--dsbl);
+    transition-duration: var(--fast);
+}
+main p{
+    margin: 0;
+}
+main h3{
+    margin: 20px 0 0;
+}
+.tab{
+    flex-basis: 100%;
+    flex-shrinK: 1;
+    overflow: auto;
+    position: relative;
+    left: 1270px;
+    scrollbar-color: var(--txt-clr) transparent;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+    opacity: 0;
+    visibility: hidden; 
+    transition-property: left, opacity, visibility;
+    transition-duration: var(--slow);
+    color: var(--txt-clr);
+}
+.notebook:has(#hom:checked) .home-page,
+.notebook:has(#abt:checked) .about-page,
+.notebook:has(#con:checked) .contacts-page,
+.notebook:has(#ant:checked) .another-page,
+.notebook:has(#ant1:checked) .another1-page,
+.notebook:has(#ant2:checked) .another2-page,
+.notebook:has(#ant3:checked) .another3-page{
+    flex-shrink: 0;
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+}
+fieldset{
+    display: none;
+}
